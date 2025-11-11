@@ -14,9 +14,4 @@ It demonstrates backend development, server-side rendering, and RESTful API inte
 
 ---
 
-## ⚙️ Setup Instructions
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/sahilzunjarrao9/SAHIL.git
-   cd SAHIL
