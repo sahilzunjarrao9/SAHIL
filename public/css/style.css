@@ -114,3 +114,60 @@ font-size: 2rem;
    margin-left: 20% !important;
 
 }
+.show-image{
+    height: 50vh !important;
+    object-fit: cover !important;
+    width: 50% !important;
+}
+.heading{
+    font-style: oblique;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* space between buttons */
+  margin-top: 25px;
+}
+
+/* Make both a & button act identical */
+.btns a,
+.btns button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 140px;
+  height: 45px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Specific styles */
+.edit-btn {
+  background-color: #007bff !important; /* blue */
+}
+.edit-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.delete-btn {
+  background-color: #dc3545; /* red */
+}
+.delete-btn:hover {
+  background-color: #a71d2a;
+  transform: translateY(-2px);
+}
+
+/* remove form default spacing */
+.btns form {
+  margin: 0;
+  padding: 0;
+}

@@ -1,19 +1,38 @@
 <% layout("/layouts/boilerplate") %>
 <body>
-<ul>
-<li> <%= a.title.toUpperCase() %></li>
-<li> <%= a.country %></li>
-<li> <%= a.price %></li>
-<li> <%= a.description %></li>
-<li> <%= a.location %></li>
+    
+    <div class="row">
+    <div class="cols-8 offset-2">
+        <h1 class="mt-4 heading">Listing Details:</h1>
+<div class="card">
+<img src="<%= a.image %>" class="card-img-top show-image" alt="..." >
+  <div class="card-body">
+   
+    <label class="card-text"><b> <%= a.title.toUpperCase() %></b></label><br>
+    <label class="card-text"><b><%= a.country.toUpperCase() %></b></label><br>
+    <label class="card-text"> <b><%= a.price %>₹ </b></label> </br>
+
+    <text class="card-text"><b><%= a.description %></b></text>
+    <p class="card-text"><b><%= a.location %> </b></p>
+    
+     </div>
+
+
+</div>
+</div>
+</div>
+    
 
 
 
+<div class="row">
+<div class="btns">
+    <a href="/listing/<%= a._id %>/edit" class="btn btn-dark abc">Edit</a>
 
-</ul>
-<a href="/listing/<%= a._id %>/edit">edit this list</a>
-</br></br></br>
-<form method="post" action="/listing/<%= a._id %>?_method=DELETE">
-    <button>DELETE</button>
+
+<form method="post" action="/listing/<%= a._id %>?_method=DELETE" >
+    <button class="btn btn-dark abc">DELETE</button>
 </form>
+</div>
+</div>
 </body>
