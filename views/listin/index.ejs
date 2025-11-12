@@ -2,17 +2,29 @@
 <% layout("/layouts/boilerplate") %>
   <body>
     <h1>ALL  Listings</h1>
-    <form action="/listing/new" method="get">
-    <button>CREATE NEW LISTING</button>
-    </form>
-     <ul>
- <% for (let listing of lists) {  %>
-<li><a href="listing/<%= listing._id %>"><%=  listing.title  %> </a>   </li>
+    
+    <% let s="Rs"; %>
+     <% let day=" per Night"; %>
+     
+     <div class="row row-cols-lg-5 row-cols-md-2 row-cols-s-1">
+    <% for (let listing of lists) {  %>
+      <a href="/listing/<%= listing._id %>" class="listing-link">
+    <div class="card" >
+  <img src="<%= listing.image %>" class="card-img-top" alt="..." style="height: 20rem;"/>
+  <div class="card-img-overlay"></div>
+  <div class="card-body">
+    <h5 class="card-title"><b><%= listing.title %> </b></h5> 
+    <p class="card-price"><%= listing.price + s +   day  %>  </p>
 
-  
-<% } %>
-</ul>
+    <p class="card-text"><%= listing.description %> </p>
    
+  </div>
+</div>
+ </a>
+<% } %>
+
+</div>
+
   </body>
  
 

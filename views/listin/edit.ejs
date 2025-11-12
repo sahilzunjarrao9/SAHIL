@@ -1,17 +1,27 @@
 <% layout("/layouts/boilerplate") %>
 <body>
 <form method="POST" action="/listings/<%= lists._id %>?_method=PUT">
-<input name="listing[title]" value="<%= lists.title %>" type="text"/>
-<br/><br/><br/>
-<textarea name="listing[description]" value="<%= lists.description %>" type="text"></textarea>
-<br/><br/><br/>
-<input name="listing[image]" value="<%= lists.image %>" type="text"/>
-<br/><br/><br/>
-<input name="listing[price]" value="<%= lists.price %>" type="number"/>
-<br/><br/><br/>
-<input name="listing[location]" value="<%= lists.location %>" type="text"/>
-<br/><br/><br/>
-<button>EDIT</button>
+    <div>
+<label for="title" class="form-label"class="form-label">Title</label>
+<input name="listing[title]" value="<%= lists.title %>" type="text" class="form-control"/>
+</div>
+<div>
+<label for="description" class="form-label"class="form-label">Description</label>
+<textarea name="listing[description]" value="<%= lists.description %>" type="text" class="form-control"></textarea>
+</div>
+<div>
+<label for="image" class="form-label"class="form-label"> Image</label>
+<input name="listing[image]" value="<%= lists.image %>" type="text" class="form-control"/>
+</div>
+<div>
+<label for="price" class="form-label"class="form-label">Price</label>
+<input name="listing[price]" value="<%= lists.price %>" type="number" class="form-control"/>
+</div>
+<div>
+<label for="location" class="form-label"class="form-label">Location</label>
+<input name="listing[location]" value="<%= lists.location %>" type="text" class="form-control"/>
+</div>
+<button class="btn btn-dark edit-btn">EDIT</button>
 
 </form>
 
