@@ -2,6 +2,7 @@ body{
      font-family: "Plus Jakarta Sans", sans-serif !important;
      margin-left: 2rem  !important;
      margin-right: 2rem !important;
+    
 }
 .navbar{
     height: 5rem;
@@ -89,13 +90,15 @@ font-size: 2rem;
 
 }
 .form-control{
-    margin-bottom: 1rem !important;
+    margin-bottom: 0% !important;
     margin-right: 20% !important;
         width:40% !important;
         margin-left: 20% !important;
           height: auto !important;
+          
 }
 .form-label{
+    margin-top:  1rem!important;
     margin-bottom: 0% !important;
     font-weight: 500 !important;
     font-size: 20;
@@ -107,9 +110,14 @@ font-size: 2rem;
 }
 .add-btn{
    background-color:red !important ; 
-   width: 50% !important;
+   width: 20% !important;
    margin-left: 20% !important;
+   margin-top: 3rem;
 }
+.add-btn:hover{
+    background-color: brown !important;
+}
+
 .edit-btn{
     background-color: red !important;
      width: 10% !important;
@@ -142,6 +150,15 @@ font-size: 2rem;
 }
 .edit-btn{
      margin-left: 300px !important;
-    
+   
      width: auto !important;
+}
+.invalid-feedback,.valid-feedback {
+    margin-top: 2px !important;      /* very small gap */
+    margin-bottom: 0px!important;
+    margin-left: 20% !important;
+
+}
+.navbartext{
+    font-weight: 5500 !important;
 }

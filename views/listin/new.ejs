@@ -7,28 +7,38 @@
     <div class="mb-3">
 <label for="title" class="form-label">Title</label>
 <input name="listing[title]" placeholder="Enter your title" type="text" class="form-control" required />
+<div class="valid-feedback"> Title looks good</div>
 </div>
 <div>
 <label for="description" class="form-label">Description</label>
-<textarea name="listing[description]" placeholder="Enter your description" type="text" class="form-control"  required></textarea>
+<textarea name="listing[description]" placeholder="Enter your description" type="text" class="form-control"  required >
+ 
+</textarea>
+
+
 </div>
 <div>
 <label for="image" class="form-label">Image</label>
 <input name="listing[image]" placeholder="Enter image url" type="text" class="form-control"required />
+<div class="invalid-feedback">PLease enter proper image address</div>
+</div>
 </div>
 
 <div>
 <label for="price" class="form-label">Price</label>
 <input name="listing[price]" placeholder="Enter price" type="number" class="form-control"required />
+<div class="invalid-feedback"> Please enter a correct price</div>
 </div>
 <div>
 <label for="country" class="form-label">Country</label>
 <input name="listing[country]" placeholder="Enter location" type="text" class="form-control"required/>
+<div class="invalid-feedback"> Please enter a proper country </div>
 
 </div>
 <div>
 <label for="location" class="form-label">Location</label>
 <input name="listing[location]" placeholder="Enter location" type="text" class="form-control" required/>
+<div class="invalid-feedback">  Please enter proper location </div>
 </div>
 
 <button class="btn btn-dark add-btn">ADD</button> 

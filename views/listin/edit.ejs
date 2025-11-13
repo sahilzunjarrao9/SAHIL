@@ -1,34 +1,45 @@
 <% layout("/layouts/boilerplate") %>
 <body>
-<form method="POST" action="/listings/<%= lists._id %>?_method=PUT">
+<form method="POST" action="/listings/<%= lists._id %>?_method=PUT" novalidate class="needs-validation" >
     <div>
           <div class="edit-heading">
             <label>Edit your listing: </label>
           </div>
 <label for="title" class="form-label"class="form-label">Title</label>
-<input name="listing[title]" value="<%= lists.title %>" type="text" class="form-control"/>
+<input name="listing[title]" value="<%= lists.title %>" type="text" class="form-control" required/>
+<div class="invalid-feedback">Please enter proper title</div>
 </div>
 <div>
 <label for="description" class="form-label"class="form-label">Description</label>
-<textarea name="listing[description]" value="<%= lists.description %>"  class="form-control"> <%= lists.description %></textarea>
+<textarea name="listing[description]" value="<%= lists.description %>"  class="form-control" required> <%= lists.description %></textarea>
+</div>
+<div class="invalid-feedback">Please enter proper description</div>
 </div>
 <div>
 <label for="country" class="form-label"class="form-label">Country</label>
-<input name="listing[country]" value="<%= lists.location %>" type="text" class="form-control"/>
+<input name="listing[country]" value="<%= lists.location %>" type="text" class="form-control" required/>
+<div class="invalid-feedback">Please enter proper country</div>
+</div>
 </div>
 
 
 <div>
 <label for="price" class="form-label"class="form-label">Price</label>
-<input name="listing[price]" value="<%= lists.price %>" type="number" class="form-control"/>
+<input name="listing[price]" value="<%= lists.price %>" type="number" class="form-control" required/>
+<div class="invalid-feedback">Please enter proper price</div>
+</div>
 </div>
 <div>
 <label for="location" class="form-label"class="form-label">Location</label>
-<input name="listing[location]" value="<%= lists.location %>" type="text" class="form-control"/>
+<input name="listing[location]" value="<%= lists.location %>" type="text" class="form-control" required/>
+<div class="invalid-feedback">Please enter proper Location</div>
+</div>
 </div>
 <button class="btn btn-dark edit-btn">EDIT</button>
 
 </form>
 
 
+
+<script src="/js/script.js"></script>
 </body>
