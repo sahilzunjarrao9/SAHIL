@@ -2,12 +2,15 @@
 <body>
 <form method="POST" action="/listings/<%= lists._id %>?_method=PUT">
     <div>
+          <div class="edit-heading">
+            <label>Edit your listing: </label>
+          </div>
 <label for="title" class="form-label"class="form-label">Title</label>
 <input name="listing[title]" value="<%= lists.title %>" type="text" class="form-control"/>
 </div>
 <div>
 <label for="description" class="form-label"class="form-label">Description</label>
-<textarea name="listing[description]" value="<%= lists.description %>" type="text" class="form-control"></textarea>
+<textarea name="listing[description]" value="<%= lists.description %>" type="textarea" class="form-control"></textarea>
 </div>
 <div>
 <label for="image" class="form-label"class="form-label"> Image</label>

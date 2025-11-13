@@ -110,7 +110,7 @@ font-size: 2rem;
 }
 .edit-btn{
     background-color: red !important;
-     width: 50% !important;
+     width: 10% !important;
    margin-left: 20% !important;
 
 }
@@ -123,51 +123,23 @@ font-size: 2rem;
     font-style: oblique;
 }
 
-.btns {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px; /* space between buttons */
-  margin-top: 25px;
+
+.edit-heading{
+    margin-left: 20%;
+    font-size: 40;
+}
+.btns{
+    display: flex !important;
 }
 
-/* Make both a & button act identical */
-.btns a,
-.btns button {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 140px;
-  height: 45px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  text-decoration: none;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
+ .delete-btn {
+   
+    margin-left: 10px !important;
+    
 
-/* Specific styles */
-.edit-btn {
-  background-color: #007bff !important; /* blue */
 }
-.edit-btn:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px);
-}
-
-.delete-btn {
-  background-color: #dc3545; /* red */
-}
-.delete-btn:hover {
-  background-color: #a71d2a;
-  transform: translateY(-2px);
-}
-
-/* remove form default spacing */
-.btns form {
-  margin: 0;
-  padding: 0;
+.edit-btn{
+     margin-left: 300px !important;
+    
+     width: auto !important;
 }
