@@ -10,12 +10,14 @@
 </div>
 <div>
 <label for="description" class="form-label"class="form-label">Description</label>
-<textarea name="listing[description]" value="<%= lists.description %>" type="textarea" class="form-control"></textarea>
+<textarea name="listing[description]" value="<%= lists.description %>"  class="form-control"> <%= lists.description %></textarea>
 </div>
 <div>
-<label for="image" class="form-label"class="form-label"> Image</label>
-<input name="listing[image]" value="<%= lists.image %>" type="text" class="form-control"/>
+<label for="country" class="form-label"class="form-label">Country</label>
+<input name="listing[country]" value="<%= lists.location %>" type="text" class="form-control"/>
 </div>
+
+
 <div>
 <label for="price" class="form-label"class="form-label">Price</label>
 <input name="listing[price]" value="<%= lists.price %>" type="number" class="form-control"/>
