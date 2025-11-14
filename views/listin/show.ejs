@@ -30,14 +30,36 @@
     
 
 <form method="get" action="/listing/<%= a._id %>/edit" >
-    <button class="btn btn-dark btn-lg edit-btn  offset-4">Edit</button>
+    <button class="btn btn-dark btn-lg edit-btn ">Edit</button>
 </form>
 
 
 <form method="post" action="/listing/<%= a._id %>?_method=DELETE" >
     <button class="btn btn-dark btn-lg delete-btn ">DELETE</button>
 </form>
+<hr>
 
 </div>
+</div>
+<hr>
+    <div class="review">
+      
+<form action="/listing/<%= a._id %>/review" method="post">
+    <h4 class="offset-2">Leave a Review</h4>
+       
+    
+ <div  class="mb-3 mt-3">       
+<labeL for="rating" class="form-label offset-2" ><b>Rating</b></labeL>
+<input type="range" min="1" max="5" id="rating" name="review[rating]" class="form-range">
+</div>
+<div class="mb-3 mt-3">
+<label for="comment" class="form-label"> <b> Comment</b></label> 
+<textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control"></textarea>
+</div>
+<button class="btn btn-outline-dark offset-4 btn"> Submit</button>
+    
+
+
+</form>
 </div>
 </body>

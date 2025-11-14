@@ -7,6 +7,8 @@ const listing = require("./models/listing.js");
 const ejs=require("ejs");
 const methodoverride=require("method-override");
 const ejsMate=require("ejs-mate");
+const review=require("./models/review.js");
+
 
 main().
 then(()=>{
@@ -76,6 +78,21 @@ res.render("./listin/edit.ejs",{lists});
 
 
 })
+app.post("/listing/:id/review",async(req,res)=>{
+let Listing=await listing.findById(req.params.id);
+let newReview=new review(req.body.review);
+
+
+Listing.reviews.push(newReview);
+
+await Listing.save();
+await newReview.save();
+console.log("new review saved");
+let { id }=req.params;
+res.redirect("/listing");
+
+})
+
  app.put("/listings/:id",async(req,res)=>{
 let { id }=req.params;
 await listing.findByIdAndUpdate(id,{...req.body.listing});

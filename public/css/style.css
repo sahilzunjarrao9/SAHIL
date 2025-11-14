@@ -2,7 +2,7 @@ body{
      font-family: "Plus Jakarta Sans", sans-serif !important;
      margin-left: 2rem  !important;
      margin-right: 2rem !important;
-    
+   
 }
 .navbar{
     height: 5rem;
@@ -161,4 +161,15 @@ font-size: 2rem;
 }
 .navbartext{
     font-weight: 5500 !important;
+}
+.review{
+    display: flexbox !important;
+  
+   
+}
+
+
+.form-range{
+    width: auto !important;
+    padding-left: 0 !important;
 }
