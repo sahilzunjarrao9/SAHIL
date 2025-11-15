@@ -1,7 +1,9 @@
 body{
      font-family: "Plus Jakarta Sans", sans-serif !important;
      margin-left: 2rem  !important;
-     margin-right: 2rem !important;
+     margin-right: 0rem !important;
+     nav-right: 0 !important;
+     
    
 }
 .navbar{
@@ -11,6 +13,10 @@ body{
     width: 100% !important;
 
 }
+footer {
+    position: static !important;
+}
+
 .fa-compass{
 color: red;
 font-size: 2rem;
@@ -58,7 +64,7 @@ font-size: 2rem;
 
 
 .card{
-    border: none  !important ;
+   
     margin-bottom: 2rem;
     
 }
@@ -172,4 +178,7 @@ font-size: 2rem;
 .form-range{
     width: auto !important;
     padding-left: 0 !important;
+}
+.listing-card{
+  border: none !important;
 }

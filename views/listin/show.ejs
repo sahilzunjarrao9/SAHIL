@@ -3,8 +3,8 @@
     
     <div class="row">
     <div class="cols-8 offset-2">
-        <h3 class="mt-4 heading">Listing Details:</h3>
-<div class="card">
+        <h3 class="mt-4 heading"><%= a.title %></h3>
+<div class="card listing-card">
 <img src="<%= a.image %>" class="card-img-top show-image" alt="..." >
   <div class="card-body">
    
@@ -44,7 +44,7 @@
 <hr>
     <div class="review">
       
-<form action="/listing/<%= a._id %>/review" method="post">
+<form action="/listing/<%= a._id %>/review" method="post" novalidate class="needs-validation">
     <h4 class="offset-2">Leave a Review</h4>
        
     
@@ -54,12 +54,38 @@
 </div>
 <div class="mb-3 mt-3">
 <label for="comment" class="form-label"> <b> Comment</b></label> 
-<textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control"></textarea>
+<textarea name="review[comment]" id="comment" cols="30" rows="5" class="form-control" required></textarea>
+<div class="invalid-feedback"> Please type some feedback</div>
 </div>
 <button class="btn btn-outline-dark offset-4 btn"> Submit</button>
     
 
 
 </form>
+<hr>
+<h4 class="offset-2">All Reviews</h4>
+
+
+
+<div class="row offset-2">
+
+<% for(lists of a.reviews){ %>
+<div class="card col-5 ms-3 mb-3">
+    <div class="card-body">
+     <h5 class="card-title"><b>John doe</b></h5>
+     <p class="card-text"><%= lists.comment %></p>
+     <label><%= lists.rating %><span style="color: gold; font-size: 24px;">&#9733;</span></label>
+
+      <form method="post" action="/listing/<%= a._id %>/reviews/<%= lists._id %>?_method=DELETE">
+    <button class="btn btn-dark btn-sm">Delete</button>
+</form>
+ 
+</div>
+
+</div>
+<%}%>
+</div>
+
+</div>
 </div>
 </body>

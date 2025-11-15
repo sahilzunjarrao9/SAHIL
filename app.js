@@ -57,8 +57,9 @@ res.render("./listin/new.ejs");
 
 app.get("/listing/:id",async(req,res)=>{
 let { id }=req.params;
-const a=await listing.findById(id);
+const a=await listing.findById(id).populate("reviews");
 res.render("./listin/show.ejs",{ a });
+
 
 
 
@@ -92,11 +93,19 @@ let { id }=req.params;
 res.redirect("/listing");
 
 })
+ app.delete("/listing/:id/reviews/:reviewId",async(req,res)=>{
+    let { id , reviewId}= req.params;
+    await listing.findByIdAndUpdate(id,{$pull:{reviews:reviewId}});
+await review.findByIdAndDelete(reviewId);
+res.redirect("/listing")
+
+ });
 
  app.put("/listings/:id",async(req,res)=>{
 let { id }=req.params;
 await listing.findByIdAndUpdate(id,{...req.body.listing});
 res.redirect("/listing");
+
 
 
 
@@ -107,3 +116,5 @@ res.redirect("/listing");
   await listing.findByIdAndDelete(id);
    res.redirect("/listing") ;
  })
+
+
