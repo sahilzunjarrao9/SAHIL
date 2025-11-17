@@ -4,10 +4,31 @@ const mongoose=require("mongoose");
 const url="mongodb://127.0.0.1:27017/wandurlust";
 const path=require("path");
 const listing = require("./models/listing.js");
+const User=require("./models/user.js");
 const ejs=require("ejs");
 const methodoverride=require("method-override");
 const ejsMate=require("ejs-mate");
 const review=require("./models/review.js");
+const session = require("express-session");
+const flash = require("connect-flash");
+const passport = require("passport");
+const Localstartegy=require("passport-local");
+const passportLocalMongoose=require("passport-local-mongoose");
+app.use(express.urlencoded({ extended: true })); // form data
+app.use(express.json()); // optional
+
+app.use(session({ secret: "x", resave: false, saveUninitialized: false }));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new Localstartegy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  next();
+});
 
 
 main().
@@ -27,6 +48,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodoverride("_method"));
 app.engine("ejs",ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  next();
+});
+
 
 async function main(){
     await mongoose.connect(url);
@@ -51,6 +79,10 @@ app.get("/listing",async (req,res)=>{
 })
 
 app.get("/listing/new",async(req,res)=>{
+    if(!req.isAuthenticated()){
+        req.flash("error","you must be logged in to create listing" );
+       return res.redirect("/listing");
+    }
 res.render("./listin/new.ejs");
 })
 
@@ -78,6 +110,9 @@ const lists=await listing.findById(id);
 res.render("./listin/edit.ejs",{lists});
 
 
+})
+app.get("/signup" , async(req,res)=>{
+    res.render("./users/signup.ejs");
 })
 app.post("/listing/:id/review",async(req,res)=>{
 let Listing=await listing.findById(req.params.id);
@@ -111,10 +146,38 @@ res.redirect("/listing");
 
 
  })
+ 
+
+
  app.delete("/listing/:id",async(req,res)=>{
    let { id }=req.params;
   await listing.findByIdAndDelete(id);
    res.redirect("/listing") ;
- })
+ });
 
 
+app.post("/signup",async(req,res)=>{
+    try{
+    let {username,email,password}=req.body;
+    const newUser= new User({username,email});
+    await User.register(newUser,password);
+    req.flash("success","Welcome to Wanderlust!");
+    res.redirect("/listing");
+
+    }catch(e){
+
+  req.flash("error",e.message);
+  res.redirect("/signup");
+    }
+
+});
+app.get("/login",async(req,res)=>{
+res.render("./users/login.ejs");
+
+
+});
+app.post("/login",passport.authenticate("local",{failureRedirect:"/login",failureFlash:true }),async(req,res)=>{
+    req.flash("success","welcome to wanderlust");
+    res.redirect("/listing");
+
+});
