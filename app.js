@@ -10,7 +10,7 @@ const methodoverride=require("method-override");
 const ejsMate=require("ejs-mate");
 const review=require("./models/review.js");
 const session = require("express-session");
-const flash = require("connect-flash");
+const flash=require("connect-flash");
 const passport = require("passport");
 const Localstartegy=require("passport-local");
 const passportLocalMongoose=require("passport-local-mongoose");
@@ -18,17 +18,20 @@ app.use(express.urlencoded({ extended: true })); // form data
 app.use(express.json()); // optional
 
 app.use(session({ secret: "x", resave: false, saveUninitialized: false }));
-app.use(flash());
+//app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new Localstartegy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) => {
-  res.locals.success = req.flash("success");
-  res.locals.error = req.flash("error");
+  res.locals.currentUser = req.user;
+ // res.locals.success = req.flash("success");
+//res.locals.error = req.flash("error");
   next();
 });
+
+
 
 
 main().
@@ -48,12 +51,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodoverride("_method"));
 app.engine("ejs",ejsMate);
 app.use(express.static(path.join(__dirname,"/public")));
-app.use((req, res, next) => {
-  res.locals.currentUser = req.user;
-  res.locals.success = req.flash("success");
-  res.locals.error = req.flash("error");
-  next();
-});
 
 
 async function main(){
@@ -80,8 +77,8 @@ app.get("/listing",async (req,res)=>{
 
 app.get("/listing/new",async(req,res)=>{
     if(!req.isAuthenticated()){
-        req.flash("error","you must be logged in to create listing" );
-       return res.redirect("/listing");
+       // req.flash("error","you must be logged in to create listing" );
+       return res.render("./users/login.ejs");
     }
 res.render("./listin/new.ejs");
 })
@@ -161,12 +158,12 @@ app.post("/signup",async(req,res)=>{
     let {username,email,password}=req.body;
     const newUser= new User({username,email});
     await User.register(newUser,password);
-    req.flash("success","Welcome to Wanderlust!");
+    //req.flash("success","Welcome to Wanderlust!");
     res.redirect("/listing");
 
     }catch(e){
 
-  req.flash("error",e.message);
+  //req.flash("error",e.message);
   res.redirect("/signup");
     }
 
@@ -177,7 +174,17 @@ res.render("./users/login.ejs");
 
 });
 app.post("/login",passport.authenticate("local",{failureRedirect:"/login",failureFlash:true }),async(req,res)=>{
-    req.flash("success","welcome to wanderlust");
+   // req.flash("success","welcome to wanderlust");
     res.redirect("/listing");
 
 });
+app.get("/logout",async(req,res)=>{
+//req.flash("success","You are Logged out");
+res.render("./users/login.ejs");
+});
+app.get("/navbarsignup",async(req,res)=>{
+  res.render("./users/signup.ejs");
+})
+app.get("/navbarlogin",async(req,res)=>{
+  res.render("./users/login.ejs");
+})

@@ -5,10 +5,24 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-     <b> <a class="nav-item nav-link navbartext" href="/">HOME </a></b>
-     <b> <a class="nav-item nav-link navbartext" href="/listing">ALL Listings</a></b>
-      <b><a class="nav-item nav-link navbartext" href="/listing/new">New Listing</a></b>
+      <a class="nav-item nav-link navbartext" href="/listing">HOME </a>
+      <a class="nav-item nav-link navbartext" href="/listing">Explore</a>
+     
      
     </div>
+     <div class="navbar-nav ms-auto">
+       <a class="nav-item nav-link navbartext" href="/listing/new">Airbnb your home</a>
+     <%  if(!currentUser){%>
+      <b><a class="nav-item nav-link navbartext" href="/navbarsignup">Sign up</a></b>
+     <b> <a class="nav-item nav-link navbartext" href="/navbarlogin">Log in</a></b>
+      <% } %>
+      <% if(currentUser) {%>
+      <a class="nav-item nav-link navbartext" href="/logout">Log out</a>
+     <% } %>
+    </div>
+
   </div>
+
+
 </nav>
+ 

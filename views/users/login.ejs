@@ -1,15 +1,9 @@
-<% layout("/layouts/boilerplate") %>
-<% if (success && success.length) { %>
-  <div class="alert alert-success"><%= success[0] %></div>
-<% } %>
-
-<% if (error && error.length) { %>
-  <div class="alert alert-danger"><%= error[0] %></div>
-<% } %>
+<% layout("./layouts/boilerplate") %>
+ 
 
 <h1 class="offset-4">Login on wandurlust</h1>
 <div class="row mt-3">
-<div class="offset-3 col-6">
+<div class="offset-3 col-6 " >
 <form action="/login" method="post" class="needs-validation" novalidate>
   <div class="mb-3">
     <label for="username" class="form-label">Username</label>
@@ -26,7 +20,7 @@
            type="password" class="form-control" required />
   </div>
 
-  <button type="submit" class="btn btn-dark btn-success" style="background-color: red; margin-left: 145px;">Login</button>
+  <button type="submit" class="btn btn-dark btn-success" style="background-color: red; margin-left: 145px; margin-bottom: 150px;">Login</button>
 </form>
 
 </form>
