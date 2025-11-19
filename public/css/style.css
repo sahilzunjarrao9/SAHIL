@@ -1,16 +1,20 @@
 body{
      font-family: "Plus Jakarta Sans", sans-serif !important;
-     margin-left: 2rem  !important;
-     margin-right: 0rem !important;
-     nav-right: 0 !important;
+   
+    margin-left: 1.2rem !important;
+    margin-right: 1rem !important;
+    width: calc(100% - 2rem) !important;
+    padding: 0 !important;
+}
+
      
    
-}
+
 .navbar{
     height: 5rem;
     background-color: white;
     border-bottom: black;
-    width: 100% !important;
+    width:100% !important;
     
 
 }

@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
     "connect-flash": "^0.1.1",
     "ejs": "^3.1.10",
     "ejs-mate": "^4.0.0",
